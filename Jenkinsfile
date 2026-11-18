@@ -1,19 +1,11 @@
 pipeline {
     agent any
-
-    stages {
-
-        stage('Build Maven') {
+    
+    stages {        
+        stage('Docker compose') {
             steps {
-                sh './mvnw clean package'
+                    sh 'docker compose up -d --build'
             }
         }
-
-        stage('Docker Build & Run') {
-            steps {
-                sh 'docker compose up -d --build'
-            }
-        }
-
     }
 }

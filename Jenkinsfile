@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -13,8 +14,9 @@ pipeline {
                     reuseNode true
                 }
             }
+
             steps {
-                sh 'mvnw clean package'
+                sh './mvnw clean package'
             }
         }
 

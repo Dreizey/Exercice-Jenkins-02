@@ -2,11 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Build Maven') {
-            steps {
-                sh './mvnw clean package'
+        stage('Maven Package') {
+            agent {
+                docker {
+                    image 'maven:3.10.0-eclipse-temurin-21'
+                    args '''
+                        -v $HOME/.m2:/root/.m2:z
+                        -u root
+                    '''
+                    reuseNode true
+                }
             }
-        }
 
         stage('Docker Build & Run') {
             steps {

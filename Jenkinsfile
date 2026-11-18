@@ -13,10 +13,10 @@ pipeline {
                     reuseNode true
                 }
             }
-            
             steps {
-                sh './mvnw clean package'
+                sh 'mvnw clean package'
             }
+        }
 
         stage('Docker Build & Run') {
             steps {

@@ -16,7 +16,8 @@ pipeline {
             }
 
             steps {
-                sh 'mvnw clean package'
+                sh 'mvn -v'
+                sh 'mvn clean package'
             }
         }
 
